@@ -54,7 +54,7 @@ namespace Faces.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Image image)
+        public async Task<IActionResult> Create([Bind("Id,ImageUrl,Age,Sex")] Image image)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Faces.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Image image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ImageUrl,Age,Sex")] Image image)
         {
             if (id != image.Id)
             {

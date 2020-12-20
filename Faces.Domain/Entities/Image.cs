@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Faces.Enums;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Faces.Domain.Entities
@@ -10,11 +11,27 @@ namespace Faces.Domain.Entities
             get; set;
         }
 
-        [NotMapped]
-        public IFormFile Picture
+        public string ImageUrl
         {
             get; set;
         }
+
+        public int? Age
+        {
+            get; set;
+        }
+
+        public PersonSex? Sex
+        {
+            get; set;
+        }
+
+
+        //[NotMapped]
+        //public IFormFile Picture
+        //{
+        //    get; set;
+        //}
 
     }
 }

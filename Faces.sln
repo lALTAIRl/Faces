@@ -3,25 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces", "Faces\Faces.csproj", "{98950AE3-5FC1-426C-B277-E8B5B6629718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces", "Faces\Faces.csproj", "{98950AE3-5FC1-426C-B277-E8B5B6629718}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{0BA36AB0-C6E4-47E3-A328-BB083B89534F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{255E056E-1FF7-453B-B62F-663024E5AAD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.Persistence", "Faces.Persistence\Faces.Persistence.csproj", "{0AEA7A83-A16D-4B6E-9436-3F67E2143E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.Persistence", "Faces.Persistence\Faces.Persistence.csproj", "{0AEA7A83-A16D-4B6E-9436-3F67E2143E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.FacePlusPlus", "Faces.FacePlusPlus\Faces.FacePlusPlus.csproj", "{678091C6-7A3E-496F-9B08-174B73321EB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.FacePlusPlus", "Faces.FacePlusPlus\Faces.FacePlusPlus.csproj", "{678091C6-7A3E-496F-9B08-174B73321EB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3E56D5F7-822A-4DD9-BF3A-EE4251001E35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.Application", "Faces.Application\Faces.Application.csproj", "{D0D7D16E-B7C0-4EC6-88F5-720DF68D1DCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.Application", "Faces.Application\Faces.Application.csproj", "{D0D7D16E-B7C0-4EC6-88F5-720DF68D1DCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.Domain", "Faces.Domain\Faces.Domain.csproj", "{6351BDAA-F87E-41F0-A520-98D671C079C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.Domain", "Faces.Domain\Faces.Domain.csproj", "{6351BDAA-F87E-41F0-A520-98D671C079C1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{532AE14B-E065-451F-8A71-3419646B5194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.Settings", "Faces.Settings\Faces.Settings.csproj", "{F80F450E-27E0-4CA8-9C60-62DDAD6A972A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faces.Settings", "Faces.Settings\Faces.Settings.csproj", "{F80F450E-27E0-4CA8-9C60-62DDAD6A972A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces.Enums", "Faces.Enums\Faces.Enums.csproj", "{AE50F168-9EAA-43C5-A240-269026E8C8E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{F80F450E-27E0-4CA8-9C60-62DDAD6A972A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F80F450E-27E0-4CA8-9C60-62DDAD6A972A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F80F450E-27E0-4CA8-9C60-62DDAD6A972A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE50F168-9EAA-43C5-A240-269026E8C8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE50F168-9EAA-43C5-A240-269026E8C8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE50F168-9EAA-43C5-A240-269026E8C8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE50F168-9EAA-43C5-A240-269026E8C8E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{D0D7D16E-B7C0-4EC6-88F5-720DF68D1DCC} = {3E56D5F7-822A-4DD9-BF3A-EE4251001E35}
 		{6351BDAA-F87E-41F0-A520-98D671C079C1} = {3E56D5F7-822A-4DD9-BF3A-EE4251001E35}
 		{F80F450E-27E0-4CA8-9C60-62DDAD6A972A} = {532AE14B-E065-451F-8A71-3419646B5194}
+		{AE50F168-9EAA-43C5-A240-269026E8C8E9} = {532AE14B-E065-451F-8A71-3419646B5194}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B769780-7219-4E28-BEFD-C8367F01C12A}

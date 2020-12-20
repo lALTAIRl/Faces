@@ -4,12 +4,37 @@
     ViewData["Title"] = "Details";
 }
 
+<style>
+    img {
+        width: 100%;
+        margin-bottom: 3%;
+    }
+</style>
+
 <h1>Details</h1>
 
 <div>
     <h4>Image</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.ImageUrl">
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
     </dl>
 </div>
 <div>

@@ -23,3 +23,5 @@
 /Faces/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map
 /Faces/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map
 /Faces/wwwroot/lib/jquery/dist/jquery.min.map
+/Faces.Enums/bin
+/Faces.Enums/obj

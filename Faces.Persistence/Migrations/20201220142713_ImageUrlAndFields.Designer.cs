@@ -4,14 +4,16 @@ using Faces.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Faces.Persistence.Migrations
 {
     [DbContext(typeof(FacesDbContext))]
-    partial class FacesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201220142713_ImageUrlAndFields")]
+    partial class ImageUrlAndFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
