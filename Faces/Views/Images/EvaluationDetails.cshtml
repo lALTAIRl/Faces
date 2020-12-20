@@ -11,7 +11,7 @@
 
     .face-summary {
         margin-bottom: 3%;
-        font-size: 20px;
+        font-size: 20px !important;
     }
 
     .btn-create {
@@ -22,9 +22,9 @@
 
 <div class="page">
     <div class="text-center">
+        <canvas id="ImgCanvas" style="background-image: url(@Model.OriginalImage.ImageUrl); display: none"></canvas>
         <img id="Img" src="@Model.OriginalImage.ImageUrl">
     </div>
-    <canvas style="background-image: url(@Model.OriginalImage.ImageUrl)"></canvas>
     <h2>Summary</h2>
     @foreach (var face in Model.NeuralResult.Faces)
     {
@@ -82,17 +82,44 @@
 </div>
 
 <div>
-    <p><button class="btn btn-lg btn-primary" onclick="imgSize()">See Landmarks</button></p>
+    <p><button class="btn btn-lg btn-primary" onclick="drawFaceRectangles()">See Landmarks</button></p>
 </div>
 <div class="text-center">
     <a class="btn btn-lg btn-primary btn-create" asp-action="Create">Try another image</a>
 </div>
 
-<script>
-    function imgSize() {
+<script type="text/javascript">
+    function drawFaceRectangles() {
         var Img = document.querySelector("#Img");
         var realWidth = Img.naturalWidth;
         var realHeight = Img.naturalHeight;
-        alert("Original width=" + realWidth + ", " + "Original height=" + realHeight);
+
+        var canvas = document.querySelector("#ImgCanvas");
+        canvas.width = realWidth;
+        canvas.height = realHeight;
+
+        var ctx = canvas.getContext("2d");
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'red';
+            @foreach (var face in Model.NeuralResult.Faces)
+            {
+                <text>
+                ctx.moveTo(@face.FaceRectangle.Left, @face.FaceRectangle.Top);
+                ctx.lineTo(@face.FaceRectangle.Left, @face.FaceRectangle.Top+@face.FaceRectangle.Height);
+                ctx.stroke();
+
+                ctx.lineTo(@face.FaceRectangle.Left+@face.FaceRectangle.Width, @face.FaceRectangle.Top+@face.FaceRectangle.Height);
+                ctx.stroke();
+
+                ctx.lineTo(@face.FaceRectangle.Left+@face.FaceRectangle.Width, @face.FaceRectangle.Top);
+                ctx.stroke();
+
+                ctx.lineTo(@face.FaceRectangle.Left, @face.FaceRectangle.Top);
+                ctx.stroke();
+                </text>
+            }
+
+        Img.style.display = 'none';
+        canvas.style.display = 'initial';
     }
 </script>
