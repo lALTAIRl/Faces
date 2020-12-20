@@ -9,24 +9,22 @@
         width: 100%;
         margin-bottom: 3%;
     }
+
+    .details {
+        margin-top: 100px;
+    }
+
+    .btn-create {
+        width: 40%;
+        font-size: 30px;
+    }
 </style>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Image</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            Image
-        </dt>
-        <dd class="col-sm-10">
-            <img id ="myImg" src="@Model.ImageUrl">
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-    <a class="btn btn-primary" asp-action="EvaluationDetails" asp-route-id="@Model.Id">Detect Face!</a>
-    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+<div class="details text-center">
+    <div>
+        <img src="@Model.ImageUrl">
+    </div>
+    <div>
+        <a class="btn btn-lg btn-create btn-primary" asp-action="EvaluationDetails" asp-route-id="@Model.Id">Detect Face!</a>
+    </div>
 </div>

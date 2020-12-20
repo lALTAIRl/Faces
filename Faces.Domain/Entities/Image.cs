@@ -1,6 +1,4 @@
-﻿using Faces.Enums;
-using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Faces.Domain.Entities
 {
@@ -11,6 +9,7 @@ namespace Faces.Domain.Entities
             get; set;
         }
 
+        [Required]
         public string ImageUrl
         {
             get; set;

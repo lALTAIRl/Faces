@@ -1,42 +1,19 @@
-﻿@model IEnumerable<Faces.Domain.Entities.Image>
-
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
 
 <style>
-    img {
-        width: 100%;
-        margin-bottom: 3%;
+    .get-started {
+        margin-top: 40%;
+    }
+
+    .get-started-button {
+        width: 40%;
+        font-size: 50px;
     }
 </style>
 
-<h1>Index</h1>
+<div class="get-started text-center">
+    <a class="get-started-button btn btn-primary" asp-action="Create">Get Started</a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Image
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="@item.ImageUrl">
-                    <div>
-                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>

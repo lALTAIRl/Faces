@@ -26,25 +26,7 @@ namespace Faces.Controllers
         // GET: Images
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Images.ToListAsync());
-        }
-
-        // GET: Images/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-
-            return View(image);
+            return View();
         }
 
         // GET: Images/Create
@@ -64,8 +46,26 @@ namespace Faces.Controllers
             {
                 _context.Add(image);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Details), new { id = image.Id });
             }
+            return View(image);
+        }
+
+        // GET: Images/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var image = await _context.Images
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (image == null)
+            {
+                return NotFound();
+            }
+
             return View(image);
         }
 
