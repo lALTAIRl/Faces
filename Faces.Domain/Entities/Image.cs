@@ -1,4 +1,7 @@
-﻿namespace Faces.Domain.Entities
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Faces.Domain.Entities
 {
     public class Image
     {
@@ -7,7 +10,8 @@
             get; set;
         }
 
-        public string ImageURL
+        [NotMapped]
+        public IFormFile Picture
         {
             get; set;
         }
