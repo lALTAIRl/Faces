@@ -6,24 +6,13 @@
 
 <style>
     img {
-        width: 100%;
         margin-bottom: 3%;
     }
 </style>
 
-<h1>Details</h1>
-
+<h1>Evaluation Details</h1>
 <div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            Image
-        </dt>
-        <dd class="col-sm-10">
-            <img id="Img" src="@Model.OriginalImage.ImageUrl">
-        </dd>
-    </dl>
-</div>
-<div>
+    <img id="Img" src="@Model.OriginalImage.ImageUrl">
     @foreach (var face in Model.NeuralResult.Faces)
     {
         <div>
@@ -83,6 +72,9 @@
     <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.OriginalImage.Id">Edit</a>
     <a class="btn btn-primary" asp-action="Index">Back to List</a>
     <p><button type="button" onclick="imgSize()">Get Original Image Size</button></p>
+</div>
+<div>
+    <a class="btn btn-lg btn-primary" asp-controller="Home" asp-action="Index">Try another image</a>
 </div>
 
 <script>

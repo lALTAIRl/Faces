@@ -1,6 +1,4 @@
-using Faces.Application.Interfaces;
 using Faces.FacePlusPlus;
-using Faces.FacePlusPlus.Services;
 using Faces.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

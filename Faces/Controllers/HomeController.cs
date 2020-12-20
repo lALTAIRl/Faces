@@ -1,11 +1,7 @@
 ﻿using Faces.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Faces.Controllers
 {
@@ -20,8 +16,7 @@ namespace Faces.Controllers
 
         public IActionResult Index()
         {
-            //return View();
-            return RedirectPermanent("/Images");
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
