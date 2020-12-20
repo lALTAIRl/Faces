@@ -18,12 +18,17 @@
         width: 40%;
         font-size: 30px;
     }
+
+    img {
+        width: 100%;
+    }
+
 </style>
 
 <div class="page">
     <div class="text-center">
-        <canvas id="ImgCanvas" style="background-image: url(@Model.OriginalImage.ImageUrl); display: none"></canvas>
-        <img id="Img" src="@Model.OriginalImage.ImageUrl">
+        <canvas class="ImgCanvas" id="ImgCanvas" style="background-image: url(@Model.OriginalImage.ImageUrl); display: none"></canvas>
+        <img class="Img" id="Img" src="@Model.OriginalImage.ImageUrl">
     </div>
     <h2>Summary</h2>
     @foreach (var face in Model.NeuralResult.Faces)
@@ -82,7 +87,7 @@
 </div>
 
 <div>
-    <p><button class="btn btn-lg btn-primary" onclick="drawFaceRectangles()">See Landmarks</button></p>
+    <p><button class="btn-landmarks btn btn-lg btn-primary" onclick="drawFaceRectangles()">See Landmarks</button></p>
 </div>
 <div class="text-center">
     <a class="btn btn-lg btn-primary btn-create" asp-action="Create">Try another image</a>
@@ -93,8 +98,17 @@
         var Img = document.querySelector("#Img");
         var realWidth = Img.naturalWidth;
         var realHeight = Img.naturalHeight;
+        //var visibleWidth = Img.width;
+        //var visibleHeight = Img.height;
+
+        //var widthRatio = visibleWidth / realWidth;
+        //var heightRatio = visibleHeight / realHeight;
+
+        //alert(widthRatio + " " + heightRatio)
 
         var canvas = document.querySelector("#ImgCanvas");
+        //canvas.width = visibleWidth;
+        //canvas.height = visibleHeight;
         canvas.width = realWidth;
         canvas.height = realHeight;
 
@@ -121,5 +135,7 @@
 
         Img.style.display = 'none';
         canvas.style.display = 'initial';
+        var button = document.querySelector(".btn-landmarks");
+        button.disabled = true;
     }
 </script>
