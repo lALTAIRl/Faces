@@ -1,0 +1,95 @@
+﻿@model Faces.Application.Models.ImageViewModel
+
+@{
+    ViewData["Title"] = "Evaluation Details";
+}
+
+<style>
+    img {
+        width: 100%;
+        margin-bottom: 3%;
+    }
+</style>
+
+<h1>Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            <img id="Img" src="@Model.OriginalImage.ImageUrl">
+        </dd>
+    </dl>
+</div>
+<div>
+    @foreach (var face in Model.NeuralResult.Faces)
+    {
+        <div>
+            <p>Age : @face.Attributes.Age.Value</p>
+            <p>Gender: @face.Attributes.Gender.Value</p>
+            @if (face.Attributes.Smile.Value > face.Attributes.Smile.Threshold)
+            {
+                <p>Smile: Smiling</p>
+            }
+            else
+            {
+                <p>Smile: Not smiling</p>
+            }
+            <p>Glass: @face.Attributes.Glass.Value</p>
+            @{
+                var leftEye = face.Attributes.EyeStatus.LeftEyeStatus;
+                if (leftEye.NoGlassEyeOpen + leftEye.NormalGlassEyeOpen > 50)
+                {
+                    <p>Left eye: Open</p>
+                }
+                else
+                {
+                    if (leftEye.NoGlassEyeClose + leftEye.NormalGlassEyeClose > 50)
+                    {
+                        <p>Left eye: Closed</p>
+                    }
+                    else
+                    {
+                        <p>Left eye: Not visible on a picture</p>
+                    }
+                }
+            }
+            @{
+                var rightEye = face.Attributes.EyeStatus.RightEyeStatus;
+                if (rightEye.NoGlassEyeOpen + rightEye.NormalGlassEyeOpen > 50)
+                {
+                    <p>Right eye: Open</p>
+                }
+                else
+                {
+                    if (rightEye.NoGlassEyeClose + rightEye.NormalGlassEyeClose > 50)
+                    {
+                        <p>Right eye: Closed</p>
+                    }
+                    else
+                    {
+                        <p>Right eye: Not visible on a picture</p>
+                    }
+                }
+            }
+        </div>
+    }
+
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.OriginalImage.Id">Edit</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    <p><button type="button" onclick="imgSize()">Get Original Image Size</button></p>
+</div>
+
+<script>
+    function imgSize() {
+        var Img = document.querySelector("#Img");
+        var realWidth = myImg.naturalWidth;
+        var realHeight = myImg.naturalHeight;
+        alert("Original width=" + realWidth + ", " + "Original height=" + realHeight);
+    }
+</script>

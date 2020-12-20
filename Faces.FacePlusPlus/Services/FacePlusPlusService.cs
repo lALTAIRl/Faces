@@ -1,4 +1,6 @@
 ﻿using Faces.Application.Interfaces;
+using Faces.Application.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -8,7 +10,7 @@ namespace Faces.FacePlusPlus.Services
 {
     public class FacePlusPlusService : IFacePlusPlusService
     {
-        public async Task DetectFace(string imageUrl)
+        public async Task<ImageEvaluationResultModel> DetectFace(string imageUrl)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage
@@ -28,7 +30,7 @@ namespace Faces.FacePlusPlus.Services
                             {"api_secret", "beuxqr3bDsyxly7hP9iPrrgoWQ4FnshO"},
                             {"image_url", imageUrl},
                             //{"return_landmark", "0"},
-                            {"return_attributes", "gender,age,eyestatus,mouthstatus"}
+                            {"return_attributes", "gender,age,eyestatus,mouthstatus,smiling"}
                         }
                     )
             };
@@ -36,39 +38,11 @@ namespace Faces.FacePlusPlus.Services
 
             response.EnsureSuccessStatusCode();
 
-            var body = await response.Content.ReadAsStringAsync();
+            var stringResponse = await response.Content.ReadAsStringAsync();
 
-            //Console.WriteLine(body);
+            var result = JsonConvert.DeserializeObject<ImageEvaluationResultModel>(stringResponse);
 
-            throw new NotImplementedException();
-        }
-
-        public async Task GetFaceLandmarks(string imageURL)
-        {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri(
-                    "https://faceplusplus-faceplusplus.p.rapidapi.com/facepp/v1/face/thousandlandmark?return_landmark=all&image_url="
-                    + imageURL
-                    ),
-                Headers =
-                {
-                    { "x-rapidapi-key", "e40e97ba8cmsh23971fc330c7308p1c9046jsnff0a79d64009" },
-                    { "x-rapidapi-host", "faceplusplus-faceplusplus.p.rapidapi.com" },
-                    { "api_key", "default-application_4921968"}
-                },
-            };
-            var response = await client.SendAsync(request);
-
-            response.EnsureSuccessStatusCode();
-
-            var body = await response.Content.ReadAsStringAsync();
-
-            //Console.WriteLine(body);
-
-            throw new NotImplementedException();
+            return result;
         }
     }
 }

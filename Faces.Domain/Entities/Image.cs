@@ -15,23 +15,5 @@ namespace Faces.Domain.Entities
         {
             get; set;
         }
-
-        public int? Age
-        {
-            get; set;
-        }
-
-        public PersonSex? Sex
-        {
-            get; set;
-        }
-
-
-        //[NotMapped]
-        //public IFormFile Picture
-        //{
-        //    get; set;
-        //}
-
     }
 }

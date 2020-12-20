@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Faces.Domain.Entities;
 using Faces.Persistence;
+using Faces.Application.Interfaces;
+using Faces.Application.Models;
 
 namespace Faces.Controllers
 {
@@ -14,9 +13,15 @@ namespace Faces.Controllers
     {
         private readonly FacesDbContext _context;
 
-        public ImagesController(FacesDbContext context)
+        private IFacePlusPlusService FacePlusPlusService
+        {
+            get;
+        }
+
+        public ImagesController(FacesDbContext context, IFacePlusPlusService facePlusPlusService)
         {
             _context = context;
+            this.FacePlusPlusService = facePlusPlusService;
         }
 
         // GET: Images
@@ -143,6 +148,21 @@ namespace Faces.Controllers
             _context.Images.Remove(image);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> EvaluationDetails(int id)
+        {
+            var image = await _context.Images.FindAsync(id);
+
+            var response = await this.FacePlusPlusService.DetectFace(image.ImageUrl);
+
+            var imageViewModel = new ImageViewModel
+            {
+                OriginalImage = image,
+                NeuralResult = response
+            };
+
+            return View(imageViewModel);
         }
 
         private bool ImageExists(int id)
