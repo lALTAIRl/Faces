@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Faces.Domain.Entities;
@@ -70,35 +69,6 @@ namespace Faces.Controllers
             return View(image);
         }
 
-        // GET: Images/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var image = await _context.Images
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (image == null)
-            {
-                return NotFound();
-            }
-
-            return View(image);
-        }
-
-        // POST: Images/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var image = await _context.Images.FindAsync(id);
-            _context.Images.Remove(image);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
         public async Task<IActionResult> EvaluationDetails(int id)
         {
             var image = await _context.Images.FindAsync(id);
@@ -112,11 +82,6 @@ namespace Faces.Controllers
             };
 
             return View(imageViewModel);
-        }
-
-        private bool ImageExists(int id)
-        {
-            return _context.Images.Any(e => e.Id == id);
         }
     }
 }
