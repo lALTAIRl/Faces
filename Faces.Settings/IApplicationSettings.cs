@@ -1,6 +1,6 @@
 ﻿namespace Faces.Settings
 {
-    public class FacePplusPlusSettings
+    public interface IApplicationSettings
     {
 
     }

@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Faces.Application\Faces.Application.csproj" />
     <ProjectReference Include="..\Faces.Persistence\Faces.Persistence.csproj" />
+    <ProjectReference Include="..\Faces.Settings\Faces.Settings.csproj" />
   </ItemGroup>
 
 </Project>

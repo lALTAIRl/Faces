@@ -1,5 +1,7 @@
 ﻿using Faces.Application.Interfaces;
 using Faces.Application.Models;
+using Faces.Settings;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,13 @@ namespace Faces.FacePlusPlus.Services
 {
     public class FacePlusPlusService : IFacePlusPlusService
     {
+        protected readonly FacePlusPlusSettings settings;
+
+        public FacePlusPlusService(IOptions<FacePlusPlusSettings> options)
+        {
+            this.settings = options.Value;
+        }
+
         public async Task<ImageEvaluationResultModel> DetectFace(string imageUrl)
         {
             var client = new HttpClient();
@@ -17,12 +26,7 @@ namespace Faces.FacePlusPlus.Services
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri("https://api-us.faceplusplus.com/facepp/v3/detect"),
-                Headers =
-                {
-                    //{ "x-rapidapi-key", "e40e97ba8cmsh23971fc330c7308p1c9046jsnff0a79d64009" },
-                    //{ "x-rapidapi-host", "faceplusplus-faceplusplus.p.rapidapi.com" },
-                    //{ "api_key", "default-application_4921968"}
-                },
+                Headers ={},
                 Content = new FormUrlEncodedContent(
                         new Dictionary<string, string>
                         {
