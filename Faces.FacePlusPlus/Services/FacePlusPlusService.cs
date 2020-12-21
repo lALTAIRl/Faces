@@ -34,7 +34,7 @@ namespace Faces.FacePlusPlus.Services
                             {"api_secret", "beuxqr3bDsyxly7hP9iPrrgoWQ4FnshO"},
                             {"image_url", imageUrl},
                             //{"return_landmark", "0"},
-                            {"return_attributes", "gender,age,eyestatus,mouthstatus,smiling"}
+                            {"return_attributes", "gender,age,eyestatus,mouthstatus,smiling,blur"}
                         }
                     )
             };

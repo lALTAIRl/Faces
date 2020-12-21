@@ -67,6 +67,9 @@ namespace Faces.Application.Models
 
         [JsonProperty("glass")]
         public Glass Glass { get; set; }
+
+        [JsonProperty("blur")]
+        public Blur Blur { get; set; }
     }
 
     public class Gender
@@ -94,6 +97,24 @@ namespace Faces.Application.Models
     {
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class Blur
+    {
+        [JsonProperty("blurness")]
+        public Blurness Blurness { get; set; }
+
+        [JsonProperty("motionblur")]
+        public Blurness MotionBlur { get; set; }
+    }
+
+    public class Blurness
+    {
+        [JsonProperty("value")]
+        public double Value { get; set; }
+
+        [JsonProperty("threshold")]
+        public double Threshold { get; set; }
     }
 
     public class Eyestatus
